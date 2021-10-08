@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Tag;
+use App\Models\{Answer, Comment, Question, Rating, Tag, User};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TagFactory extends Factory

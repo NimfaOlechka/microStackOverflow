@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Question;
+use App\Models\{Answer, Comment, Question, Rating, Tag, User};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class QuestionFactory extends Factory
@@ -23,15 +23,15 @@ class QuestionFactory extends Factory
     {
         $rndNumber = $this->faker->randomElement([rand(1,5)]);
         return [
-            'user_id' => User::factory(),
-            'category_id' => Tag::factory(),
+            'user_id' => 2,
+            'tag_id' => 2,
             'title' => $this->faker->sentence(),
-            'slug' => $this->faker->slug(10),
-            'excerpt' => $this->faker->paragraph(5),            
-            'published_at' => $this->faker->date(),
-            'body' => $this->faker->paragraphs(10), 
-            'vote_rank' => $rndNumber,           
-            'thumbnail' => 'thumbnails/illustration-' . $rndNumber.'.png'
+            'thumbnail' => 'thumbnails/illustration-1.png',
+            'slug' => $this->faker->slug(),
+            'excerpt' => $this->faker->paragraph(), 
+            'body' => $this->faker->paragraph(),           
+            'published_at' => $this->faker->date()      
+            
         ];
     }
 }

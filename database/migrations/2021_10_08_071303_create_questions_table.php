@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,9 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('slug')->unique();
             $table->text('excerpt');
-            $table->text('body'); 
-            $table->integer('vote_rank')->nullable(); 
-            $table->tinyInteger('status')->default('1');        
+            $table->text('body');                   
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
@@ -39,3 +38,4 @@ class CreateQuestionsTable extends Migration
         Schema::dropIfExists('questions');
     }
 }
+

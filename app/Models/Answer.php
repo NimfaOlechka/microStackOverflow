@@ -11,10 +11,15 @@ class Answer extends Model
     
     public function question()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class, 'question_id');
     }
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function rating()
+    {
+        return $this->has(Rating::class);
     }
 }
