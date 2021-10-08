@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     use HasFactory;
+    protected $with = ['rating']; 
     
     public function question()
     {
@@ -20,6 +21,6 @@ class Answer extends Model
 
     public function rating()
     {
-        return $this->has(Rating::class);
+        return $this->hasMany(Rating::class);
     }
 }
