@@ -22,7 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->string('slug')->unique();
             $table->text('excerpt');
             $table->text('body'); 
-            $table->integer('vote_rank'); 
+            $table->integer('vote_rank')->nullable(); 
             $table->tinyInteger('status')->default('1');        
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
