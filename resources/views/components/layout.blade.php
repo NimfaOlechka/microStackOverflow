@@ -37,10 +37,10 @@
                     <x-dropdown>
                         <x-slot name='trigger'>
                             <button class="text-xs font-bold uppercase"
-                             > Wellcome, {{auth()->user()->name}}
+                             > Wellcome, {{auth()->user()->username}}
                             </button>
                         </x-slot>    
-                        <x-dropdown-item href="/profile" :active="request()->is('/dashboard')">
+                        <x-dropdown-item href="/admin-profile" :active="request()->is('/admin-profile')">
                             Profile                            
                         </x-dropdown-item>  
 
@@ -48,7 +48,7 @@
                             Dashboard                            
                         </x-dropdown-item> 
                         
-                        <x-dropdown-item href="/questions/create" :active="request()->is('/questions/create')">
+                        <x-dropdown-item href="/question-create" :active="request()->is('/question-create')">
                             New Question                            
                         </x-dropdown-item> 
                         <x-dropdown-item href='#' x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">
@@ -63,10 +63,10 @@
                         @csrf
                         <button type="submit">Log out</button>
                     </form>
-                    <a href="/questions/create" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    <a href="/question-create" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                         + Ask Question
                     </a>                     
-                @else
+                @else                
                     <a href="/register" class="bg-gray-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Register</a>
                     <a href="/login" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Log In</a>
                 @endauth     
