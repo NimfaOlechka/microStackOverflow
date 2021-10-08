@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
@@ -23,8 +24,13 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
+//Questions and Answers
 Route::get('/', [ QuestionController::class, 'index'])->name('home');
 Route::get('questions/{question:slug}', [ QuestionController::class, 'show']);
+Route::post('questions/{question:slug}/answers', [AnswerController::class, 'store']);
+
+Route::get('questions/create', [QuestionController::class, 'create']);
+
 
 //Registration and Login
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
