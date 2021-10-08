@@ -21,10 +21,10 @@ class QuestionFactory extends Factory
      */
     public function definition()
     {
-        $rndNumber = $this->faker->randomElement([rand(1,5)]);
+        //$rndNumber = $this->faker->randomElement([rand(1,5)]);
         return [
-            'user_id' => 2,
-            'tag_id' => 2,
+            'user_id' => User::factory(),
+            'tag_id' => Tag::factory(),
             'title' => $this->faker->sentence(),
             'thumbnail' => 'thumbnails/illustration-1.png',
             'slug' => $this->faker->slug(),

@@ -8,7 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'slug',
+        'excerpt',
+        'body',
+        'user_id',
+        'tag_id',
+        'thumbnail'
+    ];
     protected $with = ['tags', 'author', 'answers'];       
 
     public function tags()

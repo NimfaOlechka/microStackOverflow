@@ -3,27 +3,11 @@
     <p>Create question</p>  
     <x-setting heading="Ask new question">
          
-     <form method="POST" action="#"  enctype="multipart/form-data">
+     <form method="POST" action="/profile/update"  enctype="multipart/form-data">
          @csrf
 
-         @method('PUT')
-         <x-form.field>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700 px-2"
-                     for="name"
-            >
-                Name
-            </label>
-        
-            <input class="border border-gray-200 p-2 w-full rounded"            
-                    name="name"
-                    type="text"
-                    id="name"            
-                    required           
-                    value = "{{ $user->name }}" 
-            >
-        
-            <x-form.error name="name" />
-        </x-form.field >
+         @method('PATCH')
+         <x-form.input name='name' :value="old('name', $user->name)" />
 
         <x-form.field>
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700 px-2"

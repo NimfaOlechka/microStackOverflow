@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisterController;
@@ -27,9 +28,21 @@ use Illuminate\Support\Facades\Route;
 //Questions and Answers
 Route::get('/', [ QuestionController::class, 'index'])->name('home');
 Route::get('questions/{question:slug}', [ QuestionController::class, 'show']);
+
+//Answer
 Route::post('questions/{question:slug}/answers', [AnswerController::class, 'store']);
 
-Route::get('questions/create', [QuestionController::class, 'create']);
+Route::get('admin/questions',[AdminController::class, 'index'])->middleware('auth');
+Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('auth');
+Route::post('admin/questions/create',[AdminController::class, 'store'])->middleware('auth');
+
+//Route::get('question-create', [QuestionController::class, 'create'])->middleware('auth');
+//Route::post('question-create', [QuestionController::class, 'store'])->middleware('auth');
+
+//Profile
+Route::get('edit-profile', [RegisterController::class, 'editProfile'])->middleware('auth');
+Route::get('admin-profile', [RegisterController::class, 'show'])->middleware('auth');
+Route::patch('profile/update',[RegisterController::class, 'update'])->middleware('auth');
 
 
 //Registration and Login

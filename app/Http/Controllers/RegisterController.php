@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {    
@@ -51,34 +53,40 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function edit(Request $request)
+    public function update(Request $request)
     {   
+        //$path = request()->file('avatar')->store('images');
+       /*  
+        return 'Done'. $p;
+ */
+        //ddd(request()->all());
         $current_user = Auth::user();
-        $attributes = $request->validate([
-            'name' => ['required|max:255'],
-            'username' => ['required',Rule::unique('posts', 'slug')->ignore($current_user)],
+        $attributes = request()->validate([
+            'name' => ['required'],
+            'username' => ['required',Rule::unique('users', 'username')->ignore($current_user)],
             'email' => ['required',Rule::unique('users', 'email')->ignore($current_user)],
-            'avatar' => ['mimes:jpeg, jpg, png, gif', 'max:2048']            
+            'avatar' => ['required']            
             
         ]);
 
-        /* if($request->avatar ?? false)
-        {
-            $attributes['avatar'] = request()->file('avatar')->store('avatar')
-        } */
-
-        /* // Upload avatar
-        if (isset($request->avatar)) {
-            $imageName = md5(time()) . '.' . $request->avatar->extension();
-            $request->avatar->move(public_path('images/avatars'), $imageName);
-            $current_user->avatar = $imageName;
-        }
-        // Update user
-        $current_user->update();
-        return redirect('dashboard/profile')
-            ->with('success', 'User data updated successfully');
- */
+        if($attributes['avatar'] ?? false)
+        {            
+            $file = request()->file('avatar');            
+            $attributes['avatar'] = Storage::putFile('avatars',$file);
+        }        
         
+        // Update user
+        $current_user->update($attributes);
+        return back()
+            ->with('success', 'User data updated successfully'); 
+        
+    }
+
+    public function savePic()
+    {
+        $path = request()->file('avatar')->store('images');
+        
+        return 'Done';
     }
 
 

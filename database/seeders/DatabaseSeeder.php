@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'body' => 'answer for the question'
         ]); */
 
-        //Question::factory()->create(); 
+        Question::factory(5)->create(); 
         //Answer::factory()->create();
        // Rating::factory()->create();
 

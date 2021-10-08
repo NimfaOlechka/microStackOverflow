@@ -19,10 +19,10 @@
                     <a href="#" class="{{request()->is('admin/index') ? 'text-blue-500': ''}}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#" class="{{request()->is('admin/index') ? 'text-blue-500': ''}}">All questions</a>
+                    <a href="/admin/questions" class="{{request()->is('admin/questions') ? 'text-blue-500': ''}}">All questions</a>
                 </li>
                 <li>
-                    <a href="/question-create" class="{{request()->is('/question-create') ? 'text-blue-500': ''}}">New Question</a>
+                    <a href="/admin/questions/create" class="{{request()->is('admin/questions/create') ? 'text-blue-500': ''}}">New Question</a>
                 </li>
             </ul>
         </aside>
