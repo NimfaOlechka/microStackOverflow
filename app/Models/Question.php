@@ -9,22 +9,23 @@ class Question extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    //protected $with = ['tags', 'author', 'answers'];       
+    protected $with = ['tags', 'author', 'answers'];       
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsTo(Tag::class, 'tag_id');
     }
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function answers()
+     public function answers()
     {
         return $this->hasMany(Answer::class);
     }
+    /*
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
+    } */
 }
