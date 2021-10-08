@@ -17,8 +17,20 @@
             <p class="mb-4">
                 {{$answer->body}}
             </p>
-            <p class="mb-4" > Vote rating number</p>
+
+            {{--Vote section--}}
             <a href="#" class="bg-blue-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Up!</a>
+            @if ($answer->rating->count())
+                @if ($answer->rating->count()>=1)                
+                <p class="mb-4" > {{$answer->rating->sum('vote')}}</p>
+            @endif
+            @else
+                <p class="text-center">
+                    No votes yet
+                </p>
+            @endif     
+            
+            
             <a href="#" class="bg-red-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Down!</a>
         </div>
     </article>

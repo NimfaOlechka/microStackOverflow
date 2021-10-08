@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     protected $with = ['rating']; 
+
+
     
     public function question()
     {
@@ -23,4 +27,6 @@ class Answer extends Model
     {
         return $this->hasMany(Rating::class);
     }
+
+    
 }
