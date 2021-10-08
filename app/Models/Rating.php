@@ -15,6 +15,4 @@ class Rating extends Model
         return $this->belongsTo(Answer::class, 'answer_id');
     }
 
-    
-    
 }

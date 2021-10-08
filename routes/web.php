@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::get('/', [ QuestionController::class, 'index'])->name('home');
+Route::get('questions/{question:slug}', [ QuestionController::class, 'show']);
