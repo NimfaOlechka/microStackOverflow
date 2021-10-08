@@ -17,4 +17,12 @@ class QuestionController extends Controller
         ]);  
 
     }
+
+    public function show(Question $question) 
+    {
+        //dd($question);
+        return view('questions.show', [
+            'question' => $question
+        ]);
+    }   
 }
