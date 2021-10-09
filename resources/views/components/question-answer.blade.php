@@ -19,7 +19,7 @@
             </p>
 
             {{--Vote section--}}
-            <a href="#" class="bg-blue-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Up!</a>
+            <a href="/rating/{{$answer->id}}/voteUp" class="bg-blue-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Up!</a>
             @if ($answer->rating->count())
                 @if ($answer->rating->count()>=1)                
                 <p class="mb-4" > {{$answer->rating->sum('vote')}}</p>
@@ -31,7 +31,7 @@
             @endif     
             
             
-            <a href="#" class="bg-red-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Down!</a>
+            <a href="/rating/{{$answer->id}}/voteDown" class="bg-red-300 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-4">Down!</a>
         </div>
     </article>
 </x-panel>

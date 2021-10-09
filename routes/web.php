@@ -30,7 +30,9 @@ Route::get('/', [ QuestionController::class, 'index'])->name('home');
 Route::get('questions/{question:slug}', [ QuestionController::class, 'show']);
 
 //Answer
-Route::post('questions/{question:slug}/answers', [AnswerController::class, 'store']);
+Route::post('questions/{question:slug}/answers', [AnswerController::class, 'store'])->middleware('auth');
+Route::get('rating/{answer:id}/voteUp', [RatingController::class, 'voteUp'])->middleware('auth');
+Route::get('rating/{answer}/voteDown', [RatingController::class, 'voteDown'])->middleware('auth');
 
 Route::get('admin/questions',[AdminController::class, 'index'])->middleware('auth');
 Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('auth');
