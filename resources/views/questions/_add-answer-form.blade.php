@@ -8,25 +8,28 @@
             <h1 class="ml-4">Do you know the answer?</h1>
         </header>
 
-        <div class="m-2 border border-gray-200 rounded-xl ">    
-            
-            <textarea class="w-full border-gray-100 rounded-xl text-sm p-2" 
-                   cols="30" rows="5"                                           
-                   name="body"                                          
-                   placeholder="Leave your answer her..."                                           
-                   required
-            ></textarea>
-            <x-form.error name="body" />
+        <div class="m-2 border border-gray-200 rounded-xl ">  
+            <x-form.field>                
+                <textarea 
+                    class="border border-gray-200 rounded p-2 w-full"
+                    cols="30"
+                    rows="2"           
+                    name="body"   
+                    id="body" 
+                    required
+                >{{old('body')}}</textarea>
+
+                <x-form.error name="body"/>
+            </x-form.field>
         </div>
 
         <div class="flex justify-end">
             <button type="submit"
                     class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-2 px-10 hover:bg-blue-500"
             >
-                Post
+                Answer
             </button>
-
-            <x-form.button> Answer </x-form.button>
+           
         </div>    
     </form>
 </x-panel>

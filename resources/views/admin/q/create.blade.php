@@ -76,7 +76,7 @@
                     name="body"   
                     id="body" 
                     required
-                >{{old('excerpt')}}</textarea>
+                >{{old('body')}}</textarea>
 
                 <x-form.error name="body"/>
             </x-form.field>             
