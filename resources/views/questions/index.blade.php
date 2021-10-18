@@ -38,6 +38,7 @@
                     class="col-span-2"/>
                 @endforeach  
             </div>
+            {{ $questions->links() }}
     @endif
       @else
           <p class="text-center">

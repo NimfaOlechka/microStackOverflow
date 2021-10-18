@@ -14,7 +14,7 @@ class QuestionController extends Controller
     {        
         //ddd(Question::all());
         return view('questions.index', [
-               'questions'=> Question::all()
+               'questions'=> Question::latest()->simplePaginate(5)
             
         ]);  
 
