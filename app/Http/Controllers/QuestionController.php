@@ -14,7 +14,7 @@ class QuestionController extends Controller
     {        
         //ddd(Question::all());
         return view('questions.index', [
-               'questions'=> Question::all()
+               'questions'=> Question::latest()->simplePaginate(6)
             
         ]);  
 
@@ -46,6 +46,7 @@ class QuestionController extends Controller
                 'tag_id' => ['required', Rule::exists('tags','id')]    
             ]); 
             
+            //TODO: Fix bug for image uploading
             $attributes['user_id'] = auth()->id(); 
             $path = request()->file('thumbnail')->store('thumbnails');      
             $attributes['thumbnail'] = $path;
