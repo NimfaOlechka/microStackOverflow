@@ -59,6 +59,13 @@
                         </form>
                     </x-dropdown>  
 
+                    @if (auth()->user()->is_admin)
+    <a href="{{ route('admin.panel') }}"
+       class="bg-blue-500 ml-6 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+        Admin Panel
+    </a>
+@endif
+
                      <form method="POST" action="/logout" class=" text-sm font-bold uppercase text-blue-500 ml-6">
                         @csrf
                         <button type="submit">Log out</button>

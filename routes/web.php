@@ -37,6 +37,12 @@ Route::get('rating/{answer}/voteDown', [RatingController::class, 'voteDown'])->m
 Route::get('admin/questions',[AdminController::class, 'index'])->middleware('admin');
 Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('admin');
 Route::post('admin/questions/create',[AdminController::class, 'store'])->middleware('admin');
+Route::view('admin/panel', 'admin.panel')
+    ->middleware('admin')
+    ->name('admin.panel');
+    Route::get('admin/users', [AdminController::class, 'users'])
+    ->middleware('admin')
+    ->name('admin.users.index');
 
 //Route::get('question-create', [QuestionController::class, 'create'])->middleware('auth');
 //Route::post('question-create', [QuestionController::class, 'store'])->middleware('auth');

@@ -105,4 +105,13 @@ class AdminController extends Controller
             'tag_id' => ['required', Rule::exists('tags','id')]                        
         ]); 
     }   */
+
+        public function users()
+{
+    $users = User::orderBy('id')->get();
+
+    return view('admin.users.index', [
+        'users' => $users,
+    ]);
+}
 }
