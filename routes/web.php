@@ -34,9 +34,9 @@ Route::post('questions/{question:slug}/answers', [AnswerController::class, 'stor
 Route::get('rating/{answer:id}/voteUp', [RatingController::class, 'voteUp'])->middleware('auth');
 Route::get('rating/{answer}/voteDown', [RatingController::class, 'voteDown'])->middleware('auth');
 
-Route::get('admin/questions',[AdminController::class, 'index'])->middleware('auth');
-Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('auth');
-Route::post('admin/questions/create',[AdminController::class, 'store'])->middleware('auth');
+Route::get('admin/questions',[AdminController::class, 'index'])->middleware('admin');
+Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('admin');
+Route::post('admin/questions/create',[AdminController::class, 'store'])->middleware('admin');
 
 //Route::get('question-create', [QuestionController::class, 'create'])->middleware('auth');
 //Route::post('question-create', [QuestionController::class, 'store'])->middleware('auth');
