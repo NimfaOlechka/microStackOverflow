@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8002:80"
+    volumes:
+      - ./:/var/www/html
     depends_on:
       mysql:
         condition: service_healthy
