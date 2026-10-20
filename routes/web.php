@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\Admin\UserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -21,26 +22,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
 //Questions and Answers
-Route::get('/', [ QuestionController::class, 'index'])->name('home');
-Route::get('questions/{question:slug}', [ QuestionController::class, 'show']);
+Route::get('/', [QuestionController::class, 'index'])->name('home');
+Route::get('questions/{question:slug}', [QuestionController::class, 'show']);
 
 //Answer
 Route::post('questions/{question:slug}/answers', [AnswerController::class, 'store'])->middleware('auth');
 Route::get('rating/{answer:id}/voteUp', [RatingController::class, 'voteUp'])->middleware('auth');
 Route::get('rating/{answer}/voteDown', [RatingController::class, 'voteDown'])->middleware('auth');
 
-Route::get('admin/questions',[AdminController::class, 'index'])->middleware('admin');
-Route::get('admin/questions/create',[AdminController::class, 'create'])->middleware('admin');
-Route::post('admin/questions/create',[AdminController::class, 'store'])->middleware('admin');
+Route::get('admin/questions', [AdminController::class, 'index'])->middleware('admin');
+Route::get('admin/questions/create', [AdminController::class, 'create'])->middleware('admin');
+Route::post('admin/questions/create', [AdminController::class, 'store'])->middleware('admin');
 Route::view('admin/panel', 'admin.panel')
     ->middleware('admin')
     ->name('admin.panel');
-    Route::get('admin/users', [AdminController::class, 'users'])
+Route::get('admin/users', [UserController::class, 'index'])
     ->middleware('admin')
     ->name('admin.users.index');
 
@@ -50,7 +47,7 @@ Route::view('admin/panel', 'admin.panel')
 //Profile
 Route::get('edit-profile', [RegisterController::class, 'editProfile'])->middleware('auth');
 Route::get('admin-profile', [RegisterController::class, 'show'])->middleware('auth');
-Route::patch('profile/update',[RegisterController::class, 'update'])->middleware('auth');
+Route::patch('profile/update', [RegisterController::class, 'update'])->middleware('auth');
 
 
 //Registration and Login
@@ -60,6 +57,5 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
 
-Route::get('logout',[SessionsController::class, 'destroy'])->middleware('auth');
-Route::post('logout',[SessionsController::class, 'destroy'])->middleware('auth');
-
+Route::get('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
